@@ -14,12 +14,20 @@ from matplotlib import pyplot as plt
 list = []
 
 def handle_keypress(event):
-    list.append(rollEntry.get())
+    val = rollEntry.get()
+    val = int(val)
+    
+    if (val < 2) or (val > 12):
+        print("Fuck you")
+    else:
+        list.append(val)
+    
     rollEntry.delete(0, 2)
     
 def handle_butonPress():
+    list.sort()
     fig, ax = plt.subplots(figsize = (10, 7))
-    ax.hist(list, bins = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+    ax.hist(list, bins = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     plt.show()
 
     
